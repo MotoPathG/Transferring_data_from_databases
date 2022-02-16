@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TDDExample.Properties
+namespace TDD_Example.Properties
 {
 
 

@@ -8,8 +8,8 @@ namespace TDD.Models
 {
     public class Configuration
     {
-        public DatabaseConfiguration? FromDatabase { get; set; }
-        public DatabaseConfiguration? ToDatabase { get; set; }
+        public DatabaseConfiguration FromDatabase { get; set; }
+        public DatabaseConfiguration ToDatabase { get; set; }
         public TransferTypes TransferType { get; set; }
         public Configuration(DatabaseConfiguration _fromDatabase, DatabaseConfiguration _toDatabase, TransferTypes _transferType)
         {

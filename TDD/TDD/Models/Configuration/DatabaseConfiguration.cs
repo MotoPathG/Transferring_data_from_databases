@@ -31,13 +31,23 @@ namespace TDD.Models
             Database = _database;
         }
 
-        public string GetConnectionString() {
-            string _connect = DatabaseType switch
+        public string GetConnectionString()
+        {
+            string _connect;
+
+            switch (DatabaseType)
             {
-                DatabaseTypes.PostgreSQL => $"Host={Host};Port={Port};Encryption={Encrypt};Username={Username};Password={Password};Database={Database};",
-                DatabaseTypes.SQLServer => $"Server={Host};Encrypt={Encrypt};User ID={Username};Password={Password};Initial Catalog={Database}",
-                _ => $"Host={Host};Username={Username};Password={Password};",
-            };
+                case DatabaseTypes.PostgreSQL:
+                    _connect = $"Host={Host};Port={Port};Encryption={Encrypt};Username={Username};Password={Password};Database={Database};";
+                    break;
+                case DatabaseTypes.SQLServer:
+                    _connect = $"Server={Host};Encrypt={Encrypt};User ID={Username};Password={Password};Initial Catalog={Database}";
+                    break;
+                default:
+                    _connect = $"Host={Host};Username={Username};Password={Password};";
+                    break;
+            }
+
             return _connect;
         }
     }

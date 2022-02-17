@@ -11,7 +11,7 @@ namespace TDD
             Setup(_configuration);
         }
         
-        public void Setup(Configuration _configuration)
+        private void Setup(Configuration _configuration)
         {
             TDDConfiguration = _configuration;
         }

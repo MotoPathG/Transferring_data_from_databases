@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TDD;
 
 namespace TDD_Example
 {
@@ -23,6 +24,16 @@ namespace TDD_Example
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public void TDDInit()
+        {
+            TDD.TDD client = new TDD.TDD(
+                new TDD.Models.Configuration(
+                    new TDD.Models.DatabaseConfiguration("localhost", "2302", false, "root", "", "tdb_example", TDD.Models.DatabaseTypes.SQLServer),
+                    new TDD.Models.DatabaseConfiguration("localhost", "2302", false, "root", "", "tdb_example", TDD.Models.DatabaseTypes.SQLServer),
+                    TDD.Models.TransferTypes.SQLServerToPostgreSQL)
+                );
         }
     }
 }

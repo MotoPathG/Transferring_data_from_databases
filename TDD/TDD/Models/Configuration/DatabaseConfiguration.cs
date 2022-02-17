@@ -40,7 +40,7 @@ namespace TDD.Models
                 case DatabaseTypes.PostgreSQL:
                     _connect = $"Host={Host};Port={Port};Encryption={Encrypt};Username={Username};Password={Password};Database={Database};";
                     break;
-                case DatabaseTypes.SQLServer:
+                case DatabaseTypes.MYSQLServer:
                     _connect = $"Server={Host};Encrypt={Encrypt};User ID={Username};Password={Password};Initial Catalog={Database}";
                     break;
                 default:
@@ -51,5 +51,5 @@ namespace TDD.Models
             return _connect;
         }
     }
-    public enum DatabaseTypes { PostgreSQL, SQLServer }
+    public enum DatabaseTypes { PostgreSQL, MYSQLServer }
 }

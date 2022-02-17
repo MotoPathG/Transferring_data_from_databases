@@ -21,6 +21,7 @@ namespace TDD_Example
     /// </summary>
     public partial class MainWindow : Window
     {
+        TDD.TDD Client;
         public MainWindow()
         {
             InitializeComponent();
@@ -28,11 +29,11 @@ namespace TDD_Example
 
         public void TDDInit()
         {
-            TDD.TDD client = new TDD.TDD(
+            Client = new TDD.TDD(
                 new TDD.Models.Configuration(
-                    new TDD.Models.DatabaseConfiguration("localhost", "2302", false, "root", "", "tdb_example", TDD.Models.DatabaseTypes.SQLServer),
-                    new TDD.Models.DatabaseConfiguration("localhost", "2302", false, "root", "", "tdb_example", TDD.Models.DatabaseTypes.SQLServer),
-                    TDD.Models.TransferTypes.SQLServerToPostgreSQL)
+                    new TDD.Models.DatabaseConfiguration("localhost", "2302", false, "root", "", "tdb_example", TDD.Models.DatabaseTypes.PostgreSQL),
+                    new TDD.Models.DatabaseConfiguration("localhost", "2302", false, "root", "", "tdb_example", TDD.Models.DatabaseTypes.MYSQLServer)
+                    )
                 );
         }
     }

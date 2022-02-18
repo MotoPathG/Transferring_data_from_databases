@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Table]
+﻿CREATE TABLE [dbo].[Example]
 (
 	[Id] INT NOT NULL PRIMARY KEY, 
     [name] NCHAR(10) NULL, 

@@ -31,9 +31,15 @@ namespace TDD_Example
         {
             Client = new TDD.TDD(
                 new TDD.Models.Configuration(
-                    new TDD.Models.DatabaseConfiguration("localhost", "2302", false, "root", "", "tdb_example", TDD.Models.DatabaseTypes.PostgreSQL),
-                    new TDD.Models.DatabaseConfiguration("localhost", "2302", false, "root", "", "tdb_example", TDD.Models.DatabaseTypes.MYSQLServer)
-                    )
+                     
+                    /* CONNECTION FOR FROM DATABASE*/
+                     /* "Data Source", "Port (for server)", "Encrypt", "Username", "Password", "Database", "Basedata Type" */
+                     new TDD.Models.DatabaseConfiguration("(LocalDB)\\MSSQLLocalDB", "2302", false, "", "", "Example", TDD.Models.DatabaseTypes.MYSQLServer),
+
+                     /* CONNECTION FOR TO DATABASE*/
+                     /* "Host", "Port", "Encrypt", "Username", "Password", "Database", "Basedata Type" */
+                     new TDD.Models.DatabaseConfiguration("pgsql-174773.srv.hoster.ru", "2302", true, "srv174773_Test", "53FVsw1", "srv174773_Example", TDD.Models.DatabaseTypes.PostgreSQL)
+                   )
                 );
         }
     }

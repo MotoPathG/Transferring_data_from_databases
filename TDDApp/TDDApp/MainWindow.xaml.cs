@@ -35,11 +35,12 @@ namespace TDDApp
 
                      /* CONNECTION FOR FROM DATABASE*/
                      /* "Data Source", "Port (for server)", "Encrypt", "Username", "Password", "Database", "Basedata Type" */
-                     new TDD.Models.DatabaseConfiguration("(LocalDB)\\MSSQLLocalDB", "2302", false, "", "", "Example", TDD.Models.DatabaseTypes.MYSQLServer),
+                     new TDD.Models.DatabaseConfiguration(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Develop\MotoPathG\Transferring_data_from_databases\TDDApp\TDDApp\MSDatabase.mdf;Integrated Security=True",
+                     "Example", TDD.Models.DatabaseTypes.MYSQLServer),
 
                      /* CONNECTION FOR TO DATABASE*/
                      /* "Host", "Port", "Encrypt", "Username", "Password", "Database", "Basedata Type" */
-                     new TDD.Models.DatabaseConfiguration("pgsql-174773.srv.hoster.ru", "2302", true, "srv174773_Test", "53FVsw1", "srv174773_Example", TDD.Models.DatabaseTypes.PostgreSQL)
+                     new TDD.Models.DatabaseConfiguration("pgsql-174773.srv.hoster.ru", "5432", true, "srv174773_test", "tests", "srv174773_test", TDD.Models.DatabaseTypes.PostgreSQL)
                    )
                 );
         }

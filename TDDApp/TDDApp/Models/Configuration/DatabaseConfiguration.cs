@@ -14,11 +14,22 @@ namespace TDD.Models
         public string Username { get; set; } = "root";
         public string Password { get; set; } = "";
         public string Database { get; set; } = "";
+        public string ConnectionString { get; set; } = "";
 
         public DatabaseTypes DatabaseType;
         public DatabaseConfiguration(string _host, string _port, bool _encrypt, string _username, string _password, string _database, DatabaseTypes _databaseType)
         {
             Setup(_host, _port, _encrypt, _username, _password, _database, _databaseType);
+        }
+        public DatabaseConfiguration(string _conncetionString, string _database, DatabaseTypes _databaseType)
+        {
+            Setup(_conncetionString, _database, _databaseType);
+        }
+        public void Setup(string _conncetionString, string _database, DatabaseTypes _databaseType)
+        {
+            DatabaseType = _databaseType;
+            Database = _database;
+            SetConnectionString(_conncetionString);
         }
         public void Setup(string _host, string _port, bool _encrypt, string _username, string _password, string _database, DatabaseTypes _databaseType)
         {
@@ -29,27 +40,34 @@ namespace TDD.Models
             Password = _password;
             DatabaseType = _databaseType;
             Database = _database;
+
+            GetConnectionString();
         }
 
+        public void SetConnectionString(string _connectionStrng)
+        {
+            ConnectionString = _connectionStrng;
+        }
         public string GetConnectionString()
         {
-            string _connect;
-
-            switch (DatabaseType)
+            if(string.IsNullOrEmpty(ConnectionString))
             {
-                case DatabaseTypes.PostgreSQL:
-                    _connect = $"Host={Host};Port={Port};Username={Username};Password={Password};Database={Database};";
-                    //_connect = $"Host={Host};Port={Port};Encryption={Encrypt};Username={Username};Password={Password};Database={Database};";
-                    break;
-                case DatabaseTypes.MYSQLServer:
-                    _connect = $"Server={Host};Encrypt={Encrypt};User ID={Username};Password={Password};Initial Catalog={Database}";
-                    break;
-                default:
-                    _connect = $"Host={Host};Username={Username};Password={Password};";
-                    break;
+                switch (DatabaseType)
+                {
+                    case DatabaseTypes.PostgreSQL:
+                        ConnectionString = $"Host={Host};Port={Port};Username={Username};Password={Password};Database={Database};";
+                        //_connect = $"Host={Host};Port={Port};Encryption={Encrypt};Username={Username};Password={Password};Database={Database};";
+                        break;
+                    case DatabaseTypes.MYSQLServer:
+                        ConnectionString = $"Server={Host};Encrypt={Encrypt};User ID={Username};Password={Password};Initial Catalog={Database}";
+                        break;
+                    default:
+                        ConnectionString = $"Host={Host};Username={Username};Password={Password};";
+                        break;
+                }
             }
 
-            return _connect;
+            return ConnectionString;
         }
     }
     public enum DatabaseTypes { PostgreSQL, MYSQLServer }

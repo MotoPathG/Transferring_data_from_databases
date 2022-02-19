@@ -12,9 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TDD;
 
-namespace TDD_Example
+namespace TDDApp
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
